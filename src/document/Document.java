@@ -67,7 +67,27 @@ public abstract class Document {
 		// TODO: Implement this method so that you can call it from the 
 	    // getNumSyllables method in BasicDocument (module 2) and 
 	    // EfficientDocument (module 3).
-	    return 0;
+		// System.out.print("Counting syllables in " + word + "...");
+		int numSyllables = 0;
+		boolean newSyllable = true;
+		String vowels = "aeiouy";
+		char[] cArray = word.toCharArray();
+		for (int i = 0; i < cArray.length; i++)
+		{
+		    if (i == cArray.length-1 && Character.toLowerCase(cArray[i]) == 'e' 
+		    		&& newSyllable && numSyllables > 0) {
+                numSyllables--;
+            }
+		    if (newSyllable && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
+				newSyllable = false;
+				numSyllables++;
+			}
+			else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
+				newSyllable = true;
+			}
+		}
+		// System.out.println( "found " + numSyllables);
+		return numSyllables;
 	}
 	
 	/** A method for testing
@@ -132,7 +152,14 @@ public abstract class Document {
 	{
 	    // TODO: You will play with this method in week 1, and 
 		// then implement it in week 2
-	    return getText().length();
+		/*System.out.println("Number of words: " + getNumWords());
+		System.out.println("Number of sentence: " + getNumSentences());
+		System.out.println("Number of Syllables: " + getNumSyllables());
+		System.out.println("1st Day: " + (1.1015 * (getNumWords() / getNumSentences())));
+		System.out.println("2nd: " + (84.6 * (getNumSyllables() / getNumWords())));*/
+		Double fleschScore = 206.835 - (1.1015 * (getNumWords() / getNumSentences())) - (84.6 * (getNumSyllables() / getNumWords())); 
+		return fleschScore;
+		//return getText().length();
 	}
 	
 	

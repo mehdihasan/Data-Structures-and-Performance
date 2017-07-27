@@ -36,7 +36,8 @@ public class BasicDocument extends Document
 	{
 		//TODO: Implement this method in week 2 according to the comments above.  
 		// See the Module 2 support videos if you need help.
-	    return 0;
+		//String[] totalWords = getText().split("[a-zA-Z]");
+	    return getTokens("[a-zA-Z]+").size();
 	}
 	
 	/**
@@ -56,7 +57,11 @@ public class BasicDocument extends Document
 	{
 	    //TODO: Implement this method.  See the Module 2 support videos 
         // if you need help.
-        return 0;
+		// List<String> sentence = getTokens("[.!?]+");
+		if (getText().isEmpty()) {
+			return 0;
+		}
+        return getText().split("[.!?]+").length;
 	}
 	
 	/**
@@ -81,7 +86,30 @@ public class BasicDocument extends Document
 		// expression for the syllable counting.  We recommend you implement 
 		// the helper function countSyllables in Document.java using a loop, 
 		// and then call it here on each word.
-        return 0;
+		// We provide for you two solutions: One that uses multiple 
+		
+		// regexs to calculate the number of syllables and the other
+		// that finds words using a loop.  The regex solution is commented 
+		// out here at the top.
+
+		/* Our solution using regex's.  Uncoment here to run it*/
+		/*
+		List<String> tokens = getTokens("[aeiouyAEIOUY]+");
+		List<String> loneEs = getTokens("[^aeiouyAEIOUY]+[eE]\\b");
+		List<String> singleEs = getTokens("\\b[^aeiouyAEIOUY]*[eE]\\b");
+		
+		
+		return tokens.size() - (loneEs.size() - singleEs.size());
+		*/
+		
+		/* Our solution that does NOT use regexs to find syllables */
+		List<String> tokens = getTokens("[a-zA-Z]+");
+		int totalSyllables = 0;
+		for (String word : tokens)
+		{
+			totalSyllables += countSyllables(word);
+		}
+		return totalSyllables;
 	}
 	
 	
@@ -111,6 +139,7 @@ public class BasicDocument extends Document
 		testCase(new BasicDocument("Sentences?!"), 3, 1, 1);
 		testCase(new BasicDocument("Lorem ipsum dolor sit amet, qui ex choro quodsi moderatius, nam dolores explicari forensibus ad."),
 		         32, 15, 1);
+		testCase(new BasicDocument("I have an Orange. Do you have any?"), 10, 8, 2);
 	}
 	
 }
