@@ -93,7 +93,6 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
-.idea
 .idea/misc.xml
 .idea/workspace.xml
 bin/document/
