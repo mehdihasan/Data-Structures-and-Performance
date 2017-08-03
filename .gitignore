@@ -10,9 +10,6 @@
 # Undo-tree save-files
 *.~undo-tree
 
-# Compiled class file
-*.class
-
 # Log file
 *.log
 
@@ -21,14 +18,6 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -72,10 +61,17 @@ tomcat
 *.sar
 *.class
 
+<<<<<<< HEAD
 # Maven 
 target/
 
 # IntelliJ project files 
+=======
+# Maven
+target/
+
+# IntelliJ project files
+>>>>>>> 057eea5
 *.iml
 *.iws
 *.ipr
@@ -104,3 +100,10 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+.idea/misc.xml
+.idea/workspace.xml
+bin/document/
+bin/spelling/
+bin/textgen/
+libs/
+out/
